@@ -32,6 +32,7 @@ function Navbar({handleLogout}) {
   const navigate = useNavigate()
 
   const navItems = [
+    { name: 'Dashboard', url: "/dashboard", active: true},
     { name: 'Route Finder', url: "/find-route", active: true },
     { name: "About us", url: "/about", active: true },
     // { name: "Sign up", url: "/signup", active: true },
