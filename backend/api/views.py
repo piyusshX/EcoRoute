@@ -57,11 +57,23 @@ class FindOptimalRouteSingle(APIView):
         delivery_location = request.data.get("delivery_location")
         agent_location = request.data.get("agent_location")
         vehicle_type = request.data.get("vehicle_type")
-        speed = request.data.get("speed")
+        route_pref = request.data.get("route_pref")
 
         # Ensure required data is present
-        if not all([delivery_location, agent_location, vehicle_type]):
+        if not all([delivery_location, vehicle_type]):
             return Response({"error": "Missing required parameters."}, status=400)
+
+        # Default agent location if missing (this part can be toggled)
+        # Uncomment the next lines to set a default agent location when it's null
+        if not agent_location:
+            agent_location = {
+                "lat": 52.5200,  # Example: Berlin's latitude
+                "lng": 13.4050   # Example: Berlin's longitude
+            }
+
+        # If agent_location is null, we can skip the default value or handle it differently
+        if not agent_location:
+            return Response({"error": "Agent location is required."}, status=400)
 
         # Example API request to the HERE Routes API v8
         api_key = "3TWVpmzl3O8Auvj5ZH3SbJ8OmetgN7BiT185Q-AzaT0"
@@ -86,10 +98,11 @@ class FindOptimalRouteSingle(APIView):
             route_data = response.json()  # Parse JSON data from the response
 
             user = request.user
-            data = Routes(user=user, routes=route_data, delivery_location=delivery_location, agent_location=agent_location, speed=speed, vehicle_type=vehicle_type)
-            data.save()
+            pred = predict_emission(["Scooter", "electric", 1500, 3])
 
-            predict_emission()
+
+            data = Routes(user=user, routes=route_data, delivery_location=delivery_location, agent_location=agent_location, route_pref=route_pref, vehicle_type=vehicle_type, co_emission=pred)
+            data.save()
 
             return Response({'success': 'data uploaded, route data saved'}, status=200)
         
