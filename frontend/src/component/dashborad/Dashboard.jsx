@@ -9,11 +9,11 @@ function Dashboard() {
     
     <div className='pt-28 pb-[50px] px-20 grid bg-[#f7f7f7] gap-4 grid-cols-3 grid-rows-2'>
         
-        <CarbonEmissionChart className="col-span-1"/>
+        {/* <CarbonEmissionChart className="col-span-1"/>
         <div className='col-span-2 row-span-2'>
           <TimeBarChart />
         </div>
-        <BestRouteInfo className="col-span-1"/>
+        <BestRouteInfo className="col-span-1"/> */}
         <Routes/>
     </div>
   )

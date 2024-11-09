@@ -5,6 +5,7 @@ import Navbar from "./component/header/Navbar";
 import { Outlet } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   const [count, setCount] = useState(0);
