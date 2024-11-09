@@ -12,6 +12,7 @@ import FindRoute from './component/findroute/FindRoute.jsx';
 import AboutUs from './component/about/about.jsx';
 import Dashboard from './component/dashborad/Dashboard.jsx';
 import { AuthProvider } from './context/AuthContext';
+import AuthLayout from './component/authentication/AuthLayout.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,9 +20,18 @@ const router = createBrowserRouter(
       <Route path='/' element={<HeroSection />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/find-route' element={<FindRoute /> } />
-      <Route path='/about' element={<AboutUs />} />
-      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/about' element={<AboutUs /> } />
+      <Route path='/dashboard' element={<Dashboard /> } />
+      <Route path='/find-route' 
+          element={<AuthLayout path={'find-route'}> 
+                          <FindRoute /> 
+                    </AuthLayout>} 
+      />
+      {/* <Route path='/dashboard' 
+          element={<AuthLayout path={'/dashboard'}> 
+                          <Dashboard /> 
+                    </AuthLayout>} 
+      /> */}
     </Route>
   )
 );
