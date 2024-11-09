@@ -14,12 +14,13 @@ function Login() {
     const [error, setError] = useState("")
 
     const loginAccount = async (data) => {
+        console.log(data)
         const response = await fetch('http://localhost:8000/api/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: data
+            body: JSON.stringify(data)
         });
 
         if (response.ok) {
@@ -46,15 +47,10 @@ function Login() {
                         <Input 
                             label="Email : "
                             placeholder="Enter your email"
-                            type="email"
+                            type="text"
                             className=""
-                            {...register("email", {
+                            {...register("username", {
                                 required: true,
-                                validate: {
-                                    // the given expression below is a regExp. In this case it is used for validating
-                                    // the entered email -> https://regexr.com/ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-                                    matchPattern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "Email address must be a valid address",
-                                }
                             })} 
                         />
                         <Input 

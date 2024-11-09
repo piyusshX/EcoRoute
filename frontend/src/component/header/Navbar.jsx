@@ -30,7 +30,7 @@ function Navbar() {
 
   const navItems = [
     { name: 'Route Finder', url: "/find-route", active: true },
-    { name: "About us", url: "/aboutus", active: true },
+    { name: "About us", url: "/about", active: true },
     { name: "Sign up", url: "/signup", active: true },
     { name: "Login", url: "/login", active: true },
   ];

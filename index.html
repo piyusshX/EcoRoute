@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Visualization</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <style>
+        #map { height: 600px; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.polylineencoded@1.0.0/leaflet.polylineencoded.min.js"></script>
+
+<script>
+    var map = L.map('map').setView([52.51579, 13.37738], 13); // Set an initial view for the map
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example polyline data (you'll use the actual polyline data from your API)
+    var polylineData1 = "BG88plkDo2vwZ7BwCvC8B7BoBjDoBjDUnGUzFT7VvC3InBnVrEUgPoBwRUsJU4NoBsY8B0UoB0KoBgK8B4I8BkI8B4IkDoQwCsO0F8agFgZwCsOwC4NoBgK8BoQoB4SoB0UoB8QoBsTUgKoBsY8B0U8B8VUgKwC0oB8B0jBoBgUwW_EsT3D8QjD4S3DwCwb8BgZoBwW8B0oBUgekDssB0FnB0K7BgPvCkNvCkc_E4SjD4X3D8GkDsEUoGA8L7BwW3D8GnB4D7B4D7B4D3DgFnB8GnB8GnBoGnBoL7BsYrE4InB4I7BwHnBkN7B8L7BgK7BsEwCgFA0KnB8VrE0FnBgjBnG8GTwHA0FA8GUwHToGnB0K7BkhBzFsdzFsJ7BkmBzFsOvCwMjDwMrE8QjDsO7BsOvCkInBnB7GT7G7BzP7BvRnB_JnBjNnBjNnBzKnBnLTzKT7GnBnLT_ETjIA_EAnGUnGoBnGoBrEoBzF8B3IkD7L0FrY0F3XkIriBwC_JwC_J8BzFwC_E8BjDwC3D0FjI0FvH0FvH8GrJwC3DkD_EwCzF8B_EoB_E8BvHwCnG8BjDwC3DoGvHgUjXoavgB8VnakDkIkDkI4D0K0KwgB0FgUgP8zBoG4X4IgegFkSwHkciF0S";
+
+    // Decode the polyline
+    var decodedPolyline1 = L.Polyline.fromEncoded(polylineData1).getLatLngs();
+
+    // Add polyline to the map
+    var polyline1 = L.polyline(decodedPolyline1, { color: 'blue' }).addTo(map);
+
+    // Add markers for the start and end locations (optional)
+    L.marker([52.51579, 13.37738]).addTo(map).bindPopup("Agent's Location");
+    L.marker([52.5306612, 13.383368]).addTo(map).bindPopup("Delivery Location");
+
+    // Zoom to fit the polyline (this will make sure the entire polyline is visible)
+    map.fitBounds(polyline1.getBounds());
+</script>
+
+</body>
+</html>

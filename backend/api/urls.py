@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FindOptimalRoute, FindOptimalRouteSingle, RegisterView, LogoutView
+from .views import FindOptimalRoute, FindOptimalRouteSingle, RegisterView, LogoutView, GetPlace
 from rest_framework.authtoken.views import obtain_auth_token
 
 
@@ -9,5 +9,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='api_logout'),
     path('login/', obtain_auth_token, name='login'),
+    path('place/', GetPlace.as_view(), name='get-place'),
 ]
 
