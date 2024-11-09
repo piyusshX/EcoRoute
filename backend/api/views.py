@@ -1,3 +1,4 @@
+import os
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -26,13 +27,13 @@ class LogoutView(APIView):
         request.user.auth_token.delete()  # Delete the user's token
         return Response({"message": "Logged out successfully"}, status=200)
 
-# this model is wip
 class FindOptimalRouteSingle(APIView):
     def post(self, request):
-        # fetch data from the request
+        # Fetch data from the request
         delivery_location = request.data.get("delivery_location")
         agent_location = request.data.get("agent_location")
-        vehicle_type = request.data.get("vehicle_type")
+        vehicle_type = request.data.get("vehicle_type", 'scooter')
+        speed = request.data.get("speed", 'fast')
         
         # Ensure required data is present
         if not all([delivery_location, agent_location, vehicle_type]):
@@ -47,22 +48,32 @@ class FindOptimalRouteSingle(APIView):
             "origin": f"{agent_location['lat']},{agent_location['lng']}",
             "destination": f"{delivery_location['lat']},{delivery_location['lng']}",
             "transportMode": vehicle_type,  # assuming vehicle type translates to transport mode
-            "routingMode": "fast",
+            "routingMode": speed,
             "alternatives": 2,
-            "return": "polyline,summary,actions,instructions",
-            "departureTime": "2024-11-09T10:00:00Z",
+            "return": "polyline,summary",  # request polyline and summary (includes route length)
             "apikey": api_key
         }
 
         # Make the API request to HERE
         response = requests.get(url, params=params)
-        
+
         # Check if the response is successful
         if response.status_code == 200:
             route_data = response.json()  # Parse JSON data from the response
-            return Response(route_data, status=200)
-        else:
-            return Response({"error": "Failed to retrieve route."}, status=response.status_code)
+            return Response({'route_data':route_data}, status=200)
+        #     # Extracting the route length from the summary
+        #     routes = route_data.get('routes', [])
+        #     if routes:
+        #         route_summary = routes[0].get('summary', {})
+        #         route_length = route_summary.get('length', None)  # Length in meters
+        #         # if route_length is not None:
+        #         #     return Response({"route_length": route_length}, status=200)
+        #         # else:
+        #         #     return Response({"error": "Route length not available."}, status=500)
+            # else:
+            #     return Response({"error": "No routes found."}, status=500)
+        return Response({"error": "Failed to retrieve route."}, status=response.status_code)
+
 
 # this model is also not done yet
 class FindOptimalRoute(APIView):
@@ -132,3 +143,45 @@ class FindOptimalRoute(APIView):
         Calculate a simple Euclidean distance between two locations (lat/lon points).
         """
         return math.sqrt((loc1['lat'] - loc2['lat']) ** 2 + (loc1['lon'] - loc2['lon']) ** 2)
+
+class GetPlace(APIView):
+    def post(self, request):
+        # Retrieve the place name from the request data, with a default value of 'delhi'
+        place_name = request.POST.get('place_name', 'delhi')
+        
+        # Construct the URL for the API request
+        apiKey = '3TWVpmzl3O8Auvj5ZH3SbJ8OmetgN7BiT185Q-AzaT0'
+        url = f'https://geocode.search.hereapi.com/v1/geocode?q={place_name}&apiKey={apiKey}'
+        
+        # Print the URL (useful for debugging)
+        print(f"The address url is: {url}")
+        
+        # Send the request to the API
+        response = requests.get(url)
+        
+        # Process the response from the API
+        if response.status_code == 200:
+            data = response.json()
+            items = data.get('items', [])
+            if items:
+                position = items[0].get("position", {})
+                lat = position.get("lat")
+                lng = position.get("lng")
+                query_score = items[0].get("scoring", {}).get("queryScore")
+                
+                # Return the results as JSON (only latitude, longitude, and queryScore)
+                return Response({
+                    "latitude": lat, 
+                    "longitude": lng, 
+                    "queryScore": query_score
+                })
+            
+            # Return None values if no items were found
+            return Response({
+                "latitude": None, 
+                "longitude": None, 
+                "queryScore": None
+            })
+        else:
+            # Handle error response status
+            return Response({"error": f"Error: {response.status_code}"})
