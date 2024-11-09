@@ -4,8 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import Input from './Input'
 import { useDispatch } from 'react-redux'
 import { login } from '../../store/authSlice' 
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 function Signup() {
+    const { setAuthToken } = useContext(AuthContext);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -25,6 +28,8 @@ function Signup() {
             const data = await response.json();
             console.log('Registration Successful:', data);
             localStorage.setItem('authToken', data.token)
+            setAuthToken(data.token)
+            console.log('registered and logged in')
             dispatch(login(data))
             navigate("/")
         } else {

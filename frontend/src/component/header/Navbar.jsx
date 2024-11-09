@@ -3,8 +3,11 @@ import React from "react";
 import Logo from "./Logo";
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
-function Navbar({handleLogout, authToken}) {
+function Navbar({handleLogout}) {
+  const { authToken, setAuthToken } = useContext(AuthContext);
   function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(

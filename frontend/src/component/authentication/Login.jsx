@@ -5,8 +5,11 @@ import Input from './Input'
 import { useDispatch } from 'react-redux'
 import RouteInput from "../findroute/RouteInput";
 import { useForm } from 'react-hook-form'
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 function Login() {
+    const { setAuthToken } = useContext(AuthContext);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -25,6 +28,7 @@ function Login() {
 
         if (response.ok) {
             const data = await response.json();
+            setAuthToken(data.token)
             localStorage.setItem('authToken', data.token)
             // onLogin(data.token); // Call the onLogin prop with the received token
             console.log('Login Successful:', data);

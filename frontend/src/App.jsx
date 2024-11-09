@@ -3,11 +3,12 @@ import "./App.css";
 import Footer from "./component/footer/Footer";
 import Navbar from "./component/header/Navbar";
 import { Outlet } from "react-router-dom";
-
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [authToken, setAuthToken] = useState(localStorage.getItem('authToken'));
+  const { authToken, setAuthToken } = useContext(AuthContext);
   console.log(authToken)
 
   const handleLogout = async () => {
@@ -20,7 +21,7 @@ function App() {
           'Content-Type': 'application/json',
         },
       });
-  
+
       // Check for a successful response
       if (response.ok) {
         // Remove the token from localStorage and reset state
@@ -39,9 +40,9 @@ function App() {
     <>
       <Navbar handleLogout={handleLogout} authToken={authToken} />
       <main>
-        <Outlet />
+        <Outlet setAuthToken={setAuthToken} />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
