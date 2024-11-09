@@ -47,13 +47,14 @@ function FindRoute() {
             delivery_location: { lat: deliveryCords.lat, lng: deliveryCords.lng },
             vehicle_type: data.vehicle,
             speed: data.mode,
-            isEV: data.isEV === 'true',
+            Fuel: data.Fuel,
         };
 
         const response = await fetch('http://localhost:8000/api/find-route/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Authentication': `Token ${localStorage.getItem('authToken')}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(params)
         });
@@ -114,11 +115,11 @@ function FindRoute() {
                         </div>
                         <div className='col-span-1'>
                             <Select
-                                options={["true", "false"]}
-                                label="Is your vehicle electric"
+                                options={["petrol", "diesel", "electric"]}
+                                label="Select Fuel type:"
                                 placeholder="Select"
                                 setOption={setOption}
-                                {...register("isEV", { required: true })}
+                                {...register("Fuel", { required: true })}
                             />
                         </div>
                         <div className="col-span-1">
@@ -148,7 +149,11 @@ function FindRoute() {
                             />
                         </div>
                         <div className="col-span-2">
-                            <button type="submit" className="w-full text-white px-4 py-2 mt-4 rounded-lg bg-[#18BED4] hover:bg-[#15a8bc]">
+                            <button type="submit" 
+                            
+                            className="w-full text-white px-4 py-2 mt-4 rounded-lg bg-[#18BED4] hover:bg-[#15a8bc]"
+                            onClick={deliveryLocation}
+                            >
                                 Submit
                             </button>
                         </div>
