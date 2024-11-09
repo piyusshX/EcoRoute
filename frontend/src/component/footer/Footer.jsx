@@ -12,9 +12,6 @@ function Footer() {
         <div className="bg-white border-t border-gray-200">
             <footer className="w-full py-7 px-20">
                 <div className="flex justify-between">
-                    <div className="mr-4">
-                        <Logo />
-                    </div>
                     <div className="copyright-text text-gray-400">
                         © 2024 EcoRoute. All Rights Reserved.
                     </div>
