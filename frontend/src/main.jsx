@@ -9,6 +9,7 @@ import HeroSection from './component/herosection/HeroSection.jsx'
 import Signup from './component/authentication/Signup.jsx'
 import Login from './component/authentication/Login.jsx'
 import FindRoute from './component/findroute/FindRoute.jsx'
+import AboutUs from './component/about/about.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,7 @@ const router = createBrowserRouter(
       <Route path='/signup' element={<Signup />} />
       <Route path='/login' element={<Login />} />
       <Route path='/find-route' element={<FindRoute />} />
-
+      <Route path='/about' element={<AboutUs />} />
     </Route>
   )
 )
