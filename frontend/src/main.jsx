@@ -10,7 +10,7 @@ import Signup from './component/authentication/Signup.jsx';
 import Login from './component/authentication/Login.jsx';
 import FindRoute from './component/findroute/FindRoute.jsx';
 import AboutUs from './component/about/about.jsx';
-import SingleUserDashboard from './component/dashborad/SingleUserDashboard.jsx';
+import Dashboard from './component/dashborad/Dashboard.jsx';
 import { AuthProvider } from './context/AuthContext';
 
 const router = createBrowserRouter(
@@ -19,9 +19,9 @@ const router = createBrowserRouter(
       <Route path='/' element={<HeroSection />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/find-route' element={<FindRoute />} />
+      <Route path='/find-route' element={<FindRoute /> } />
       <Route path='/about' element={<AboutUs />} />
-      <Route path='/single-user-dashboard' element={<SingleUserDashboard />} />
+      <Route path='/dashboard' element={<Dashboard />} />
     </Route>
   )
 );
