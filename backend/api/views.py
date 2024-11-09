@@ -147,7 +147,7 @@ class FindOptimalRoute(APIView):
 class GetPlace(APIView):
     def post(self, request):
         # Retrieve the place name from the request data, with a default value of 'delhi'
-        place_name = request.POST.get('place_name', 'delhi')
+        place_name = request.data.get('place', 'delhi')
         
         # Construct the URL for the API request
         apiKey = '3TWVpmzl3O8Auvj5ZH3SbJ8OmetgN7BiT185Q-AzaT0'
