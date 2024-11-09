@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../store/authSlice' 
 import Input from './Input'
 import { useDispatch } from 'react-redux'
+import RouteInput from "../findroute/RouteInput";
 import { useForm } from 'react-hook-form'
 
 function Login() {
@@ -78,6 +79,7 @@ function Login() {
                     </p>
             </div>
         </div>
+        <RouteInput/>
     </div>
     )
 }

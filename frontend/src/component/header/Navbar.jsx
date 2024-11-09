@@ -6,6 +6,26 @@ import { useSelector } from 'react-redux'
 
 function Navbar() {
 
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            sessionStorage.setItem("lat", latitude);
+            sessionStorage.setItem("lng", longitude);
+            console.log("Longitude and LAtitude is stored in the session")
+          },
+          (error) => {
+            console.error(`Error: ${error.message}`);
+          }
+        )
+    } else {
+        messageText.innerText = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  getLocation()
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
 
@@ -41,7 +61,6 @@ function Navbar() {
   //     console.error('Error logging out:', error);
   //   }
   // }
-  
 
 
   return (
