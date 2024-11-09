@@ -10,6 +10,7 @@ import Signup from './component/authentication/Signup.jsx'
 import Login from './component/authentication/Login.jsx'
 import FindRoute from './component/findroute/FindRoute.jsx'
 import AboutUs from './component/about/about.jsx'
+import SingleUserDashboard from './component/dashborad/SingleUserDashboard.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path='/login' element={<Login />} />
       <Route path='/find-route' element={<FindRoute />} />
       <Route path='/about' element={<AboutUs />} />
+      <Route path='/single-user-dashboard' element={<SingleUserDashboard />} />
     </Route>
   )
 )
