@@ -8,5 +8,5 @@ class Routes(models.Model):
     delivery_location = models.JSONField(null=True, blank=True)
     agent_location = models.JSONField(null=True, blank=True)
     vehicle_type = models.CharField(max_length=10, null=True, blank=True)
-    speed = models.IntegerField(null=True, blank=True)
-    # co_emission = models.IntegerField(null=True,blank=True)
+    route_pref = models.CharField(max_length=10,null=True, blank=True)
+    co_emission = models.FloatField(null=True,blank=True)
