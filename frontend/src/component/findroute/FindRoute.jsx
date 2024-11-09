@@ -49,13 +49,14 @@ function FindRoute() {
             delivery_location: { lat: deliveryCords.lat, lng: deliveryCords.lng },
             vehicle_type: data.vehicle,
             speed: data.mode,
-            isEV: data.isEV === 'true',
+            Fuel: data.Fuel,
         };
 
         const response = await fetch('http://localhost:8000/api/find-route/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Authentication': `Token ${localStorage.getItem('authToken')}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(params)
         });
@@ -102,66 +103,69 @@ function FindRoute() {
                                 </button>
                             </div>
 
-                            <div className='col-span-2'>
-                                <Select
-                                    options={vehicle}
-                                    label="Vehicle type"
-                                    placeholder="Select vehicle type"
-                                    setOption={setOption}
-                                    {...register(`vehicle-${index}`, { required: true })}
-                                />
-                            </div>
-                            <div className='col-span-2'>
-                                <Select
-                                    options={mode}
-                                    label="Route Preference"
-                                    placeholder="Select route type"
-                                    setOption={setOption}
-                                    {...register(`mode-${index}`, { required: true })}
-                                />
-                            </div>
-                            <div className='col-span-2'>
-                                <Select
-                                    options={["true", "false"]}
-                                    label="Is your vehicle electric"
-                                    placeholder="Select"
-                                    setOption={setOption}
-                                    {...register(`isEV-${index}`, { required: true })}
-                                />
-                            </div>
-                            <div className="col-span-1">
-                                <label htmlFor={`Latitude-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
-                                    Latitude
-                                </label>
-                                <input
-                                    type="number"
-                                    id={`Latitude-${index}`}
-                                    value={lat}
-                                    readOnly
-                                    className="w-full px-3 py-2 border text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-                                    {...register(`lat-${index}`)}
-                                />
-                            </div>
-                            <div className="col-span-1">
-                                <label htmlFor={`Longitude-${index}`} className="block text-sm font-medium text-gray-700 mb-1">
-                                    Longitude
-                                </label>
-                                <input
-                                    type="number"
-                                    id={`Longitude-${index}`}
-                                    value={lng}
-                                    readOnly
-                                    className="w-full px-3 py-2 border text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
-                                    {...register(`lng-${index}`)}
-                                />
-                            </div>
-                            <div className="col-span-2">
-                                <button type="submit" className="w-full mb-6 text-white px-4 py-2 mt-4 rounded-lg bg-[#18BED4] hover:bg-[#15a8bc]">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    ))}
+                        <div className='col-span-1'>
+                            <Select
+                                options={vehicle}
+                                label="Vehicle type"
+                                placeholder="Select vehicle type"
+                                setOption={setOption}
+                                {...register("vehicle", { required: true })}
+                            />
+                        </div>
+                        <div className='col-span-1'>
+                            <Select
+                                options={mode}
+                                label="Route Preference"
+                                placeholder="Select route type"
+                                setOption={setOption}
+                                {...register("mode", { required: true })}
+                            />
+                        </div>
+                        <div className='col-span-1'>
+                            <Select
+                                options={["petrol", "diesel", "electric"]}
+                                label="Select Fuel type:"
+                                placeholder="Select"
+                                setOption={setOption}
+                                {...register("Fuel", { required: true })}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <label htmlFor="Latitude" className="block text-sm font-medium text-gray-700 mb-1">
+                                Latitude
+                            </label>
+                            <input
+                                type="number"
+                                id="Latitude"
+                                value={lat}
+                                readOnly
+                                className="w-full px-3 py-2 border text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+                                {...register("lat")}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <label htmlFor="Longitude" className="block text-sm font-medium text-gray-700 mb-1">
+                                Longitude
+                            </label>
+                            <input
+                                type="number"
+                                id="Longitude"
+                                value={lng}
+                                readOnly
+                                className="w-full px-3 py-2 border text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300"
+                                {...register("lng")}
+                            />
+                        </div>
+                        <div className="col-span-2">
+                            <button type="submit" 
+                            
+                            className="w-full text-white px-4 py-2 mt-4 rounded-lg bg-[#18BED4] hover:bg-[#15a8bc]"
+                            onClick={deliveryLocation}
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

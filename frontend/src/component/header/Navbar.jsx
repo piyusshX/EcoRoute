@@ -3,8 +3,11 @@ import React from "react";
 import Logo from "./Logo";
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
-function Navbar() {
+function Navbar({handleLogout}) {
+  const { authToken, setAuthToken } = useContext(AuthContext);
   function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -31,8 +34,8 @@ function Navbar() {
   const navItems = [
     { name: 'Route Finder', url: "/find-route", active: true },
     { name: "About us", url: "/about", active: true },
-    { name: "Sign up", url: "/signup", active: true },
-    { name: "Login", url: "/login", active: true },
+    // { name: "Sign up", url: "/signup", active: true },
+    // { name: "Login", url: "/login", active: true },
   ];
 
   // const handleLogout = async () => {
@@ -80,6 +83,33 @@ function Navbar() {
               </li>
             ) : null
             )}
+
+{authToken && authToken.length > 0 ? (
+            <>
+              <li>
+                <button className='nav-items bg-transparent mr-24 text-[#1F2833] hover:text-[#18BED4] transition-colors duration-200 group'
+                  onClick={handleLogout}
+                >Log Out
+                  <div className="w-full h-[1.5px] bg-[#ffffff] cursor-pointer group-hover:bg-[#18BED4] transition-colors duration-200"></div>
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <button className='nav-items bg-transparent mr-24 text-[#1F2833] hover:text-[#18BED4] transition-colors duration-200 group'
+                  onClick={() => navigate("/login")}
+                >Log In
+                  <div className="w-full h-[1.5px] bg-[#ffffff] cursor-pointer group-hover:bg-[#18BED4] transition-colors duration-200"></div></button>
+              </li>
+              <li>
+                <button className='nav-items bg-transparent text-[#1F2833] hover:text-[#18BED4] transition-colors duration-200 group'
+                  onClick={() => navigate("/signup")}
+                >Sign up
+                  <div className="w-full h-[1.5px] bg-[#ffffff] cursor-pointer group-hover:bg-[#18BED4] transition-colors duration-200"></div></button>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
