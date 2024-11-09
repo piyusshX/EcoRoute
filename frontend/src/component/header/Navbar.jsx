@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useRef } from "react";
 import React from "react";
 import Logo from "./Logo";
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Navbar() {
-
   function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -25,12 +24,12 @@ function Navbar() {
     }
   }
 
-  getLocation()
+  // if (visitRef == 1) getLocation()
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate()
 
   const navItems = [
-    { name: 'Route Finder', url: "/", active: true },
+    { name: 'Route Finder', url: "/find-route", active: true },
     { name: "About us", url: "/aboutus", active: true },
     { name: "Sign up", url: "/signup", active: true },
     { name: "Login", url: "/login", active: true },
