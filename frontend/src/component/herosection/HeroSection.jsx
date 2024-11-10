@@ -51,8 +51,8 @@ function HeroSection({user}) {
           <div className="grid md:grid-cols-3 gap-8">
             <FetureCard 
               icon={<Leaf className="w-8 h-8 text-[#18BED4]" />}
-              title="100% Eco-Friendly"
-              description="Zero-emission fleet using electric vehicles and bikes for all deliveries"
+              title="Reduces Carbon Footprints"
+              description="Advanced analysis helps select the path with minimal carbon emission"
             />
             <FetureCard 
               icon={<Timer className="w-8 h-8 text-[#18BED4]" />}
@@ -61,8 +61,8 @@ function HeroSection({user}) {
             />
             <FetureCard 
               icon={<TrendingUp className="w-8 h-8 text-[#18BED4] " />}
-              title="Real-Time Tracking"
-              description="Track your deliveries in real-time with our advanced GPS system"
+              title="Advanced analytic tools"
+              description=""
             />
           </div>
         </div>

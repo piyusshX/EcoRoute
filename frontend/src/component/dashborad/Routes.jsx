@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'; // To include the default Leaflet styles
 
 function Routes() {
   return (
-    <div className="w-[100%] h-full px-7 py-12 bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="w-[100%] h-full px-7 py-4 bg-white rounded-2xl shadow-lg overflow-hidden">
             <div>
                 <h1 className="text-[#1F2833] mb-2 text-start text-xl font-bold profile-text">
                     Route
