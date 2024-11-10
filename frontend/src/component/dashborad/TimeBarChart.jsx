@@ -41,7 +41,7 @@ function TimeBarChart({}) {
                     'rgb(153, 102, 255)',
                     'rgb(201, 203, 207)'
                   ],
-                  borderWidth: 1
+                  borderWidth: 1,
                 }
               ],
               
