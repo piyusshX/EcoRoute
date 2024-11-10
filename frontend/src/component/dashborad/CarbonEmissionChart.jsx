@@ -1,18 +1,19 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, Text } from 'recharts';
 
-function CarbonEmissionChart() {
+function CarbonEmissionChart({co_emission}) {
+    // const carbonEmission = co_emission * 10;
     const carbonEmission = 70;
 
     const data = [
         { name: 'Carbon Emission', value: carbonEmission },
-        { name: 'Remaining', value: 100 - carbonEmission },
+        { name: 'Saved', value: 100 - carbonEmission },
     ];
 
     const COLORS = ['#FF6384', '#C8C8C8'];
 
     return (
-        <div className="w-full my- px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
             <div>
                 <h1 className="text-[#1F2833] mb-2 text-start text-xl font-bold profile-text">
                     Carbon Emission %

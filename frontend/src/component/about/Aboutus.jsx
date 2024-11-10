@@ -7,7 +7,7 @@ import { MdOutlineFeedback,MdOutlineContacts} from "react-icons/md";
 
 
 
-function AboutUs () {
+function Aboutus () {
   const [username, setUsername] = useState('');
   const [feedback, setFeedback] = useState('');
 
@@ -80,4 +80,4 @@ function AboutUs () {
   );
 };
 
-export default AboutUs;
+export default Aboutus;

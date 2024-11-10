@@ -9,10 +9,10 @@ function TimeBarChart({}) {
     const arrX = ['Subject A', 'Subject B', 'Subject C', 'Subject D', 'Subject E']
     const arrY = [85, 72, 90, 65, 50]
   return (
-    <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-xl overflow-hidden">
       <div>
         <div>
-            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Time </h1>
+            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Time each route take</h1>
             <div className='h-[2px] bg-black w-full rounded'></div>
         </div>
         <div>

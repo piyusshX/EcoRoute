@@ -2,35 +2,29 @@ import { Award, BadgeCheckIcon, CarFront, TimerIcon, MapPinnedIcon } from "lucid
 import React from "react";
 
 
-function BestRouteInfo({ vehicle, distance, time}) {
+function BestRouteInfo({ vehicle_type, distance, time}) {
   return (
-    <div className="w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div className="h-32 bg-gradient-to-r from-[#18BED4] to-[#14a8bc]"></div>
-      <div className="relative px-6 pb-6">
-        {/* Profile Image ki functionality nhi pata :( */}
-        <div className="absolute -top-16 left-6 bg-white rounded-full">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/9356/9356230.png"
-            alt="map pin png"
-            className="w-32 h-32 rounded-full border-4 border-white text-black shadow-md object-cover"
-          />
+    <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div>
+            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Best route info</h1>
+            <div className='h-[2px] bg-black w-full rounded'></div>
         </div>
-
-        <div className="pt-20">
+        <div>
+        <div className="">
           {/* <ProfileHeader name="Sarah Anderson" title="Senior Product Designer" /> */}
           <div className="mt-4 space-y-2">
             <div className="flex items-center text-gray-600">
-              <CarFront className="w-4 h-4 mr-2 text-[#18BED4]" />
-              <span>Vehicle : {vehicle}</span>
-            </div>
-            <div className="flex items-center text-gray-600">
-              <MapPinnedIcon className="w-4 h-4 mr-2 text-[#18BED4]"/>
-              <span>Distance : {distance}m</span>
-            </div>
-            <div className="flex items-center text-gray-600">
-              <TimerIcon className="w-4 h-4 mr-2 text-[#18BED4]"/>
-              <span>Estimated Time : {Math.round(time/60)}mins</span>
-            </div>
+                <CarFront className="w-4 h-4 mr-2 text-[#18BED4]" />
+                <span>Vehicle : {vehicle_type}</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <MapPinnedIcon className="w-4 h-4 mr-2 text-[#18BED4]"/>
+                <span>Distance : {distance}m</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <TimerIcon className="w-4 h-4 mr-2 mb- text-[#18BED4]"/>
+                <span>Estimated Time : {Math.round(time/60)}mins</span>
+              </div>
           </div>
         </div>
       </div>
