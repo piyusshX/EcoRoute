@@ -114,7 +114,7 @@ function Dashboard() {
             <BestRouteInfo />
           </div>
         </div>
-        <div className='grid grid-cols-12 gap-4  mt-4  grid-flow-row'>
+        <div className='grid grid-cols-12 gap-4 mt-4  grid-flow-row'>
           <div className='col-span-9 '>
             <Routes circularCoordinates={getCircularCoordinates()} />
           </div>

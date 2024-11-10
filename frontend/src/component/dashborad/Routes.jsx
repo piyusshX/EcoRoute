@@ -31,49 +31,46 @@ function FitToPolygon({ positions }) {
 
 function Routes({ circularCoordinates}) {
   return (
-    <div
-      className="relative mt-5 mr-5"
-      style={{
-        width: '70vw',
-        height: '50vh',
-        border: '2px solid #000',
-        borderRadius: '10px',
-        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-        resize: 'both',
-        overflow: 'hidden',
-      }}
-    >
-      <MapContainer
-        center={circularCoordinates[0]} // Initial map center
-        zoom={15}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+          <div className="w-[100%] h-full px-7 py-12 bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div>
+                <h1 className="text-[#1F2833] mb-2 text-start text-xl font-bold profile-text">
+                    Route
+                </h1>
+                <div className="h-[2px] mb-4 bg-black w-full rounded"></div>
+            </div>
+            <div className='w-full h-full justify-center flex items-center'>
+            <MapContainer
+                center={circularCoordinates[0]} // Initial map center
+                zoom={15}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+                scrollWheelZoom={false}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
 
-        {/* Fit map view to the bounds of the hexagon polygon */}
-        <FitToPolygon positions={circularCoordinates} />
+                {/* Fit map view to the bounds of the hexagon polygon */}
+                <FitToPolygon positions={circularCoordinates} />
 
-        {/* Draw each side of the hexagon with a different color */}
-        {circularCoordinates.slice(0, -1).map((point, index) => {
-          const nextIndex = (index + 1) % circularCoordinates.length;
-          return (
-            <Polyline
-              key={index}
-              positions={[point, circularCoordinates[nextIndex]]}
-              color={colors[index % colors.length]}
-              weight={4} // Line thickness
-            />
-          );
-        })}
-      </MapContainer>
-    </div>
+                {/* Draw each side of the hexagon with a different color */}
+                {circularCoordinates.slice(0, -1).map((point, index) => {
+                  const nextIndex = (index + 1) % circularCoordinates.length;
+                  return (
+                    <Polyline
+                      key={index}
+                      positions={[point, circularCoordinates[nextIndex]]}
+                      color={colors[index % colors.length]}
+                      weight={4} // Line thickness
+                    />
+                  );
+                })}
+              </MapContainer>
+            </div>
+        </div>
   );
 }
 

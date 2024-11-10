@@ -21,7 +21,7 @@ function CarbonEmissionChart({co_emission}) {
                 <div className="h-[2px] bg-black w-full rounded"></div>
             </div>
             <div className="flex justify-center" style={{ width: '300px', height: '300px' }}>
-                <PieChart width={300} height={300}>
+                <PieChart width={250} height={250}>
                     <Pie
                         data={data}
                         cx="50%"

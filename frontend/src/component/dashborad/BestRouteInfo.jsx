@@ -7,7 +7,7 @@ function BestRouteInfo({ vehicle_type, distance, time}) {
     <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
         <div>
             <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Best route info</h1>
-            <div className='h-[2px] bg-black w-full rounded'></div>
+            <div className='h-[1.5px] bg-black w-full rounded'></div>
         </div>
         <div>
         <div className="">
