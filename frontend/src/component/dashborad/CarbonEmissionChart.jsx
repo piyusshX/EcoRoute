@@ -3,11 +3,11 @@ import { PieChart, Pie, Cell, Tooltip, Legend, Text, ResponsiveContainer } from 
 
 function CarbonEmissionChart({co_emission}) {
     // const carbonEmission = co_emission * 10;
-    const carbonEmission = 70;
+    const carbonEmission = .70 * Number(co_emission);
 
     const data = [
         { name: 'Carbon Emission', value: carbonEmission },
-        { name: 'Saved', value: 100 - carbonEmission },
+        { name: 'Saved', value: .30 * carbonEmission },
     ];
 
     const COLORS = ['#FF6384', '#C8C8C8'];
@@ -20,7 +20,7 @@ function CarbonEmissionChart({co_emission}) {
                 </h1>
                 <div className="h-[2px] bg-black w-full rounded"></div>
             </div>
-            <div className="flex justify-center" style={{ width: '300px', height: '300px' }}>
+            <div className="flex justify-center items-center" style={{ width: '250px', height: '250px' }}>
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart width={250} height={250}>
                     <Pie

@@ -19,9 +19,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(source='user.email', read_only=True)    
+    username = serializers.CharField(source='user.username', read_only=True)    
     class Meta:
         model = UserProfile
-        fields = ['bio', 'profile_image']  # Fields we want to update
+        fields = ['bio', 'profile_image', 'email', 'username']  # Fields we want to update
 
     # Custom validation (optional, you can extend this as needed)
     def validate_bio(self, value):

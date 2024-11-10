@@ -106,10 +106,9 @@ class FindOptimalRouteSingle(APIView):
             route_data = response.json()  # Parse JSON data from the response
 
             user = request.user
-            pred = predict_emission(["Scooter", "electric", 1500, 3])
+            pred = predict_emission([vehicle_type, Fuel, 1500, 3])
 
-
-            data = Routes(user=user, routes=route_data, delivery_location=delivery_location, agent_location=agent_location, route_pref=route_pref, vehicle_type=vehicle_type, co_emission=pred)
+            data = Routes(user=user,distance=route_data["routes"][0]["sections"][0]["summary"]["length"], duration=route_data["routes"][0]["sections"][0]["summary"]["duration"], routes=route_data, delivery_location=delivery_location, agent_location=agent_location, route_pref=route_pref, vehicle_type=vehicle_type, co_emission=pred)
             data.save()
 
             return Response({'success': 'data uploaded, route data saved'}, status=200)
@@ -181,19 +180,19 @@ class UserRoutesView(APIView):
             # Exclude polyline from the nested 'routes' field
             filtered_routes = []
 
-            if route.routes:
-                for route_section in route.routes:
-                    # Check if route_section is a dictionary (normal section) or string (e.g., polyline)
-                    if isinstance(route_section, dict):
-                        # If it's a dictionary, remove 'polyline' field
-                        route_section_copy = route_section.copy()  # Make a copy of the section
-                        route_section_copy.pop('polyline', None)  # Remove the 'polyline' key if it exists
-                        filtered_routes.append(route_section_copy)
-                    elif isinstance(route_section, str):
-                        # If it's a string (e.g., polyline), just append it as-is
-                        filtered_routes.append(route_section)
+            # if route.routes:
+            #     for route_section in route.routes:
+            #         # Check if route_section is a dictionary (normal section) or string (e.g., polyline)
+            #         if isinstance(route_section, dict):
+            #             # If it's a dictionary, remove 'polyline' field
+            #             route_section_copy = route_section.copy()  # Make a copy of the section
+            #             route_section_copy.pop('polyline', None)  # Remove the 'polyline' key if it exists
+            #             filtered_routes.append(route_section_copy)
+            #         elif isinstance(route_section, str):
+            #             # If it's a string (e.g., polyline), just append it as-is
+            #             filtered_routes.append(route_section)
 
-            route_data['routes'] = filtered_routes  # Assign the filtered routes without polyline
+            route_data['routes'] = route.routes  # Assign the filtered routes without polyline
             response_data.append(route_data)
 
         return JsonResponse(response_data, safe=False, status=status.HTTP_200_OK)

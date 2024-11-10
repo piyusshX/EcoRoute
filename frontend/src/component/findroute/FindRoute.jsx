@@ -21,7 +21,7 @@ function FindRoute() {
     const { register, handleSubmit, watch, setValue, reset } = useForm();
     const [lat, setLat] = useState(0);
     const [lng, setLng] = useState(0);
-    const vehicle = ["Car", "Motorcycle", "Scooter", "Truck"];
+    const vehicle = ["Car", "Scooter", "Truck"];
     const mode = ["short", "eco", "fast", "balanced"];
     const deliveryValue = watch("delivery");
 

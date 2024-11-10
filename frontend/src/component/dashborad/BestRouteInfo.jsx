@@ -2,11 +2,11 @@ import { Award, BadgeCheckIcon, CarFront, TimerIcon, MapPinnedIcon } from "lucid
 import React from "react";
 
 
-function BestRouteInfo({ vehicle_type, distance, time}) {
+function BestRouteInfo({ emission, distance, time}) {
   return (
     <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
         <div>
-            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Best route info</h1>
+            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Efficiency Report</h1>
             <div className='h-[1.5px] bg-black w-full rounded'></div>
         </div>
         <div>
@@ -15,15 +15,15 @@ function BestRouteInfo({ vehicle_type, distance, time}) {
           <div className="mt-4 space-y-2">
             <div className="flex items-center text-gray-600">
                 <CarFront className="w-4 h-4 mr-2 text-[#18BED4]" />
-                <span>Vehicle : {vehicle_type}</span>
+                <span>Net Carbon Emissions: {emission.toFixed(2)} gms</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <MapPinnedIcon className="w-4 h-4 mr-2 text-[#18BED4]"/>
-                <span>Distance : {distance}m</span>
+                <span>Distance : {distance} KM</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <TimerIcon className="w-4 h-4 mr-2 mb- text-[#18BED4]"/>
-                <span>Estimated Time : {Math.round(time/60)}mins</span>
+                <span>Estimated Time : {time} Mins</span>
               </div>
           </div>
         </div>

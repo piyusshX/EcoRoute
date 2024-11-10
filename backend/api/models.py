@@ -17,6 +17,8 @@ class Routes(models.Model):
     vehicle_type = models.CharField(max_length=10, null=True, blank=True)
     route_pref = models.CharField(max_length=10, null=True, blank=True)
     co_emission = models.FloatField(null=True, blank=True)
+    duration = models.FloatField(null=True, blank=True)
+    distance = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f"Route for {self.user.username}"

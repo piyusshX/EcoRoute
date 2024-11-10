@@ -2,15 +2,16 @@ import { Award, BadgeCheckIcon, Briefcase, Mail } from "lucide-react";
 import React from "react";
 
 
-function UserProfile({ user, email, bio}) {
+function UserProfile({ user, email, bio, image}) {
   return (
     <div className="w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div className="h-32 bg-gradient-to-r from-[#18BED4] to-[#14a8bc]"></div>
+      <div className="h-20 bg-gradient-to-r from-[#18BED4] to-[#14a8bc]"></div>
       <div className="relative px-6 pb-6">
         {/* Profile Image ki functionality nhi pata :( */}
         <div className="absolute -top-16 left-6">
           <img
-            src="https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg"
+            // src="https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg"
+            src={image}
             alt="Profile"
             className="w-32 h-32 rounded-full border-4 border-white text-black shadow-md object-cover"
           />

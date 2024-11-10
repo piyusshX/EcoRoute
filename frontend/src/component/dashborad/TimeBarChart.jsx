@@ -5,15 +5,23 @@ import { Colors } from 'chart.js';
 
 Chart.register(Colors);
 
-function TimeBarChart({}) {
-    const arrX = ['Subject A', 'Subject B', 'Subject C', 'Subject D', 'Subject E']
-    const arrY = [85, 72, 90, 65, 50]
+function TimeBarChart({ durations }) {
+  // Assuming 'durations' is already defined as an array of route durations
+  const arrY = durations
+
+  // Create arrX dynamically based on the length of 'durations'
+  const arrX = durations.map((_, index) => `Route ${String.fromCharCode(65 + index)}`);
+
+  // Now arrX and arrY (durations) will have the same length
+  console.log("arrX:", arrX);
+  console.log("arrY:", durations);
+
   return (
     <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-xl overflow-hidden">
       <div>
         <div>
-            <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Time each route take</h1>
-            <div className='h-[2px] bg-black w-full rounded'></div>
+          <h1 className='text-[#1F2833] mb-2 text-start text-xl font-bold profile-text'>Time each route takes</h1>
+          <div className='h-[2px] bg-black w-full rounded'></div>
         </div>
         <div>
           <Bar
@@ -21,7 +29,7 @@ function TimeBarChart({}) {
               labels: arrX,
               datasets: [
                 {
-                    label: "",
+                  label: "Time taken (s)",
                   data: arrY,
                   backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -44,8 +52,8 @@ function TimeBarChart({}) {
                   borderWidth: 1,
                 }
               ],
-              
-              
+
+
             }}
           />
         </div>
