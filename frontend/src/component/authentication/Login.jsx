@@ -47,8 +47,8 @@ function Login() {
                 <form onSubmit={handleSubmit(loginAccount)} className='mt-8'>
                     <div className='space-y-5'>
                         <Input 
-                            label="Email : "
-                            placeholder="Enter your email"
+                            label="Username : "
+                            placeholder="Enter your Username"
                             type="text"
                             className=""
                             {...register("username", {
