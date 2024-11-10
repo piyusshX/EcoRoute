@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend, Text } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, Text, ResponsiveContainer } from 'recharts';
 
 function CarbonEmissionChart({co_emission}) {
     // const carbonEmission = co_emission * 10;
@@ -13,7 +13,7 @@ function CarbonEmissionChart({co_emission}) {
     const COLORS = ['#FF6384', '#C8C8C8'];
 
     return (
-        <div className="w-full px-7 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="w-full px-4 py-5 bg-white rounded-2xl shadow-lg overflow-hidden">
             <div>
                 <h1 className="text-[#1F2833] mb-2 text-start text-xl font-bold profile-text">
                     Carbon Emission %
@@ -21,6 +21,7 @@ function CarbonEmissionChart({co_emission}) {
                 <div className="h-[2px] bg-black w-full rounded"></div>
             </div>
             <div className="flex justify-center" style={{ width: '300px', height: '300px' }}>
+            <ResponsiveContainer width="100%" height="100%">
                 <PieChart width={250} height={250}>
                     <Pie
                         data={data}
@@ -51,6 +52,7 @@ function CarbonEmissionChart({co_emission}) {
                         {carbonEmission}%
                     </Text>
                 </PieChart>
+            </ResponsiveContainer>
             </div>
         </div>
     );
