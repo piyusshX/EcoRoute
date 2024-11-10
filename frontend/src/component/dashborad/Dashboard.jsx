@@ -107,7 +107,7 @@ function Dashboard() {
           <div className="col-span-3">
             <UserProfile />
           </div>
-          <div className="col-span-9 row-span-2">
+          <div className="col-span-9 row-span-3">
             <TimeBarChart />
           </div>
           <div className="col-span-3">
@@ -116,13 +116,16 @@ function Dashboard() {
         </div>
         <div className='grid grid-cols-12 gap-4  mt-4  grid-flow-row'>
           <div className='col-span-9 '>
-            <Routes />
+            <Routes circularCoordinates={getCircularCoordinates()} />
           </div>
           <div className='col-span-3'>
             <CarbonEmissionChart />
           </div>
         </div>
       </div>
+      // <div>
+      //       <Routes circularCoordinates={getCircularCoordinates()} />
+      // </div>
       )
 }
 

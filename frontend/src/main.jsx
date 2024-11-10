@@ -9,7 +9,7 @@ import HeroSection from './component/herosection/HeroSection.jsx';
 import Signup from './component/authentication/Signup.jsx';
 import Login from './component/authentication/Login.jsx';
 import FindRoute from './component/findroute/FindRoute.jsx';
-import AboutUs from './component/about/about.jsx';
+import AboutUs from './component/about/Aboutus.jsx';
 import Dashboard from './component/dashborad/Dashboard.jsx';
 import { AuthProvider } from './context/AuthContext';
 import AuthLayout from './component/authentication/AuthLayout.jsx';
