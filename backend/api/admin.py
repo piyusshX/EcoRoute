@@ -1,5 +1,5 @@
-# for registering models
 from django.contrib import admin
-from .models import Routes
+from .models import UserProfile, Routes
 
+admin.site.register(UserProfile)
 admin.site.register(Routes)

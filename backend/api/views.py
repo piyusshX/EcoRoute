@@ -9,9 +9,13 @@ from rest_framework import status, generics
 import math
 import json
 from urllib.parse import urlencode
+from django.http import JsonResponse
 
-from .serializers import RegisterSerializer
-from .models import Routes
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .serializers import RegisterSerializer, UserProfileSerializer
+from .models import Routes, UserProfile, User
 
 # ml model import karna bhari pad raha
 root_dir = os.path.abspath(__file__)
@@ -23,6 +27,15 @@ sys.path.append(os.path.join(root_dir, 'ml_models'))
 
 # Now we can import from ml_models
 from emissions.model import predict_emission
+
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        # Create a profile when a user is created
+        UserProfile.objects.create(user=instance)
+    # Update the profile when the user is saved (e.g., to add bio or profile image)
+    instance.userprofile.save()
+
 
 class RegisterView(APIView):
     def post(self, request):
@@ -40,12 +53,6 @@ class LogoutView(APIView):
         request.user.auth_token.delete()  # Delete the user's token
         return Response({"message": "Logged out successfully"}, status=200)
 
-import json
-import requests
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-
 class FindOptimalRouteSingle(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -58,6 +65,7 @@ class FindOptimalRouteSingle(APIView):
         agent_location = request.data.get("agent_location")
         vehicle_type = request.data.get("vehicle_type")
         route_pref = request.data.get("route_pref")
+        Fuel = request.data.get("Fuel")
 
         # Ensure required data is present
         if not all([delivery_location, vehicle_type]):
@@ -86,7 +94,7 @@ class FindOptimalRouteSingle(APIView):
             "transportMode": vehicle_type,  # assuming vehicle type translates to transport mode
             # "routingMode": speed,
             "alternatives": 0,
-            "return": "polyline,summary",  # request polyline and summary (includes route length)
+            "return": "summary",  # request polyline and summary (includes route length)
             "apikey": api_key
         }
 
@@ -150,3 +158,81 @@ class GetPlace(APIView):
         else:
             # Handle error response status
             return Response({"error": f"Error: {response.status_code}"})
+
+class UserRoutesView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        # Fetch all routes for the authenticated user
+        user_routes = Routes.objects.filter(user=request.user)
+        
+        response_data = []
+
+        for route in user_routes:
+            route_data = {
+                "user": route.user.username,
+                "delivery_location": route.delivery_location,
+                "agent_location": route.agent_location,
+                "vehicle_type": route.vehicle_type,
+                "route_pref": route.route_pref,
+                "co_emission": route.co_emission,
+            }
+
+            # Exclude polyline from the nested 'routes' field
+            filtered_routes = []
+
+            if route.routes:
+                for route_section in route.routes:
+                    # Check if route_section is a dictionary (normal section) or string (e.g., polyline)
+                    if isinstance(route_section, dict):
+                        # If it's a dictionary, remove 'polyline' field
+                        route_section_copy = route_section.copy()  # Make a copy of the section
+                        route_section_copy.pop('polyline', None)  # Remove the 'polyline' key if it exists
+                        filtered_routes.append(route_section_copy)
+                    elif isinstance(route_section, str):
+                        # If it's a string (e.g., polyline), just append it as-is
+                        filtered_routes.append(route_section)
+
+            route_data['routes'] = filtered_routes  # Assign the filtered routes without polyline
+            response_data.append(route_data)
+
+        return JsonResponse(response_data, safe=False, status=status.HTTP_200_OK)
+
+class UserProfileUpdateView(APIView):
+    permission_classes = [IsAuthenticated]  # Ensure only authenticated users can update
+
+    def get(self, request):
+        # Get the user profile for the logged-in user
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            return Response({"detail": "Profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = UserProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self, request):
+        # Update the user's profile (bio and/or image)
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            return Response({"detail": "Profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = UserProfileSerializer(profile, data=request.data, partial=False)  # Set partial=True to allow partial updates
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request):
+        # Allow partial updates (e.g., just the bio or just the image)
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            return Response({"detail": "Profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = UserProfileSerializer(profile, data=request.data, partial=True)  # partial=True allows partial updates
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -58,8 +58,8 @@ function FindRoute() {
         // If agent location is missing or invalid, use default values
         if (isNaN(agentLat) || isNaN(agentLng)) {
             console.log("Agent location not found or invalid. Using default values.");
-            agentLat = 52.5200;  // Default Latitude (Berlin)
-            agentLng = 13.4050;  // Default Longitude (Berlin)
+            agentLat = 28.6129;  // Default Latitude (Berlin)
+            agentLng = 77.2295;  // Default Longitude (Berlin)
         }
 
         console.log(deliveryCords)
@@ -94,6 +94,8 @@ function FindRoute() {
             const responseData = await response.json();
             console.log('Route found and saved:', responseData);
             navigate("/find-route");
+            window.location.reload();
+            window.location.reload();
         } else {
             const errorData = await response.json();
             console.error('Route finding failed:', errorData);
