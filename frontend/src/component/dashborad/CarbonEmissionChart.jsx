@@ -32,6 +32,7 @@ function CarbonEmissionChart({co_emission}) {
                         fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"
+                        animation="4000"
                     >
                         {data.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index]} />

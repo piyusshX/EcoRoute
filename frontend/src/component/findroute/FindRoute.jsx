@@ -109,7 +109,7 @@ function FindRoute() {
     };
 
     return (
-        <div className='px-20 pt-40 pb-20 w-[90%] max-w-[1200px] mx-auto flex flex-col justify-center items-center'>
+        <div className='px-20 pt-40 pb-20 w-[90%] max-w-[900px] mx-auto flex flex-col justify-center items-center'>
             <div className='bg-gray-100 rounded-xl px-5 py-5 border border-black/10 w-full'>
                 <h2 className="text-center text-2xl flex justify-center pt-6 font-bold leading-tight text-black">
                     <MapPinCheck className='text-[#18BED4] mr-2' /> Route Finder
@@ -133,7 +133,7 @@ function FindRoute() {
                             </button>
                         </div>
 
-                        <div className='col-span-1'>
+                        <div className='col-span-2'>
                             <Select
                                 options={vehicle}
                                 label="Vehicle type"
@@ -141,7 +141,7 @@ function FindRoute() {
                                 {...register("vehicle", { required: true })}
                             />
                         </div>
-                        <div className='col-span-1'>
+                        <div className='col-span-2'>
                             <Select
                                 options={mode}
                                 label="Route Preference"
@@ -149,7 +149,7 @@ function FindRoute() {
                                 {...register("mode", { required: true })}
                             />
                         </div>
-                        <div className='col-span-1'>
+                        <div className='col-span-2'>
                             <Select
                                 options={["petrol", "diesel", "electric"]}
                                 label="Select Fuel type:"
