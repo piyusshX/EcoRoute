@@ -1,0 +1,19 @@
+[
+    {
+        "user": "dave",
+        "delivery_location": {
+            "lat": 28.63412,
+            "lng": 77.21688
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Truck",
+        "route_pref": "balanced",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    }
+]

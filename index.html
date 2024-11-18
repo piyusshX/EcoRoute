@@ -15,6 +15,7 @@
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.polylineencoded@1.0.0/leaflet.polylineencoded.min.js"></script>
+<script src="https://unpkg.com/leaflet-geometryutil"></script>
 
 <script>
     var map = L.map('map').setView([52.51579, 13.37738], 13); // Set an initial view for the map
@@ -23,11 +24,11 @@
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Example polyline data (you'll use the actual polyline data from your API)
-    var polylineData1 = "BG88plkDo2vwZ7BwCvC8B7BoBjDoBjDUnGUzFT7VvC3InBnVrEUgPoBwRUsJU4NoBsY8B0UoB0KoBgK8B4I8BkI8B4IkDoQwCsO0F8agFgZwCsOwC4NoBgK8BoQoB4SoB0UoB8QoBsTUgKoBsY8B0U8B8VUgKwC0oB8B0jBoBgUwW_EsT3D8QjD4S3DwCwb8BgZoBwW8B0oBUgekDssB0FnB0K7BgPvCkNvCkc_E4SjD4X3D8GkDsEUoGA8L7BwW3D8GnB4D7B4D7B4D3DgFnB8GnB8GnBoGnBoL7BsYrE4InB4I7BwHnBkN7B8L7BgK7BsEwCgFA0KnB8VrE0FnBgjBnG8GTwHA0FA8GUwHToGnB0K7BkhBzFsdzFsJ7BkmBzFsOvCwMjDwMrE8QjDsO7BsOvCkInBnB7GT7G7BzP7BvRnB_JnBjNnBjNnBzKnBnLTzKT7GnBnLT_ETjIA_EAnGUnGoBnGoBrEoBzF8B3IkD7L0FrY0F3XkIriBwC_JwC_J8BzFwC_E8BjDwC3D0FjI0FvH0FvH8GrJwC3DkD_EwCzF8B_EoB_E8BvHwCnG8BjDwC3DoGvHgUjXoavgB8VnakDkIkDkI4D0K0KwgB0FgUgP8zBoG4X4IgegFkSwHkciF0S";
+    // Example polyline data
+    var polylineData1 = "BG-ynmkDm59wZ2DuN8BoGsEoQwCsJsEkSoBoG8BsJsE0U8BgK8BoLoB4IoB0KoBoLoBkNwC8a8B0UoB0UoBkN8BwW8BwWwC0UoB0KwC4SkDof4DwlBwCkXoBwMwCsYwCkXoB0KgFkwB8B8Q8B8V8BkNwCwWwC0U8B0P8BwR4D8fUwMoBwgBoBoaoBoVoBgUUkSU8LU8LoB8LkDwR7GkD3I0F3DwCnQwMzPkNvHoG_doa_dgZjX4SjS0P3SwRrJsJkDwqBUwMkDw0BUgPTgP7B8QnG8kBzKs7B7BsO3I84BnQo7CjIkrBjI4rBzF4c7BsJ7B0K_Jo4B7LouBzFkSjSoiC_J8fzK8fvHwRvCsE_JwR7G8LvM8V_OzPnG7GvWrY3NnQzKvM7Q7VjNzPjIzK3cnkBnLrO3InL7QzU7GjIjI_JA0KToLT0FTsE7BoG7BgFzFkNnLoanLkXnGkN3I4SrOofnGwMrJ4SrE4IjD0F";
 
-    // Decode the polyline
-    var decodedPolyline1 = L.Polyline.fromEncoded(polylineData1).getLatLngs();
+    // Decode the polyline using PolylineUtil.decode
+    var decodedPolyline1 = L.PolylineUtil.decode(polylineData1);
 
     // Add polyline to the map
     var polyline1 = L.polyline(decodedPolyline1, { color: 'blue' }).addTo(map);
@@ -36,9 +37,10 @@
     L.marker([52.51579, 13.37738]).addTo(map).bindPopup("Agent's Location");
     L.marker([52.5306612, 13.383368]).addTo(map).bindPopup("Delivery Location");
 
-    // Zoom to fit the polyline (this will make sure the entire polyline is visible)
+    // Zoom to fit the polyline
     map.fitBounds(polyline1.getBounds());
 </script>
+
 
 </body>
 </html>

@@ -1,0 +1,104 @@
+[
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.65599,
+            "lng": 77.23697
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Car",
+        "route_pref": "eco",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    },
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.52113,
+            "lng": 77.18017
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Car",
+        "route_pref": "fast",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    },
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.55277,
+            "lng": 77.26106
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Car",
+        "route_pref": "fast",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    },
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.59119,
+            "lng": 77.24006
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Scooter",
+        "route_pref": "balanced",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    },
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.634,
+            "lng": 77.21966
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Scooter",
+        "route_pref": "eco",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    },
+    {
+        "user": "john",
+        "delivery_location": {
+            "lat": 28.61579,
+            "lng": 77.27851
+        },
+        "agent_location": {
+            "lat": 28.6129,
+            "lng": 77.2295
+        },
+        "vehicle_type": "Car",
+        "route_pref": "fast",
+        "co_emission": 4.7944999999999975,
+        "routes": [
+            "routes"
+        ]
+    }
+]

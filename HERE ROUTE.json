@@ -1,0 +1,327 @@
+{
+    "notices": [
+        {
+            "title": "The provided parameter 'avoid=tollRoad' is unknown.",
+            "code": "unknownParameter",
+            "severity": "info"
+        }
+    ],
+    "routes": [
+        {
+            "id": "608e2d00-b5ce-4265-ba5c-2a6adf2d8c46",
+            "sections": [
+                {
+                    "id": "7b45274d-35f5-4b01-b6b0-82fe5c05b3b7",
+                    "type": "vehicle",
+                    "actions": [
+                        {
+                            "action": "depart",
+                            "duration": 173,
+                            "length": 1002,
+                            "instruction": "Head toward Am Nordbahnhof on Invalidenstraße. Go for 1.0 km.",
+                            "offset": 0
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 56,
+                            "length": 356,
+                            "instruction": "Turn right onto Brunnenstraße. Go for 356 m.",
+                            "offset": 49,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 147,
+                            "length": 1044,
+                            "instruction": "Turn left onto Torstraße. Go for 1.0 km.",
+                            "offset": 60,
+                            "direction": "left",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 48,
+                            "length": 395,
+                            "instruction": "Turn right onto Karl-Liebknecht-Straße. Go for 395 m.",
+                            "offset": 88,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 61,
+                            "length": 302,
+                            "instruction": "Turn left onto Alexanderplatz (B2/B5) toward Frankfurt (O.)/A10/Friedrichshain. Go for 302 m.",
+                            "offset": 101,
+                            "direction": "left",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "arrive",
+                            "duration": 0,
+                            "length": 0,
+                            "instruction": "Arrive at Alexanderplatz (B2/B5).",
+                            "offset": 118
+                        }
+                    ],
+                    "departure": {
+                        "time": "2024-11-09T11:00:00+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.5309912,
+                                "lng": 13.384595
+                            },
+                            "originalLocation": {
+                                "lat": 52.53086,
+                                "lng": 13.3846899
+                            }
+                        }
+                    },
+                    "arrival": {
+                        "time": "2024-11-09T11:08:05+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.52252,
+                                "lng": 13.41521
+                            },
+                            "originalLocation": {
+                                "lat": 52.5222399,
+                                "lng": 13.41274
+                            }
+                        }
+                    },
+                    "summary": {
+                        "duration": 485,
+                        "length": 3099,
+                        "baseDuration": 402
+                    },
+                    "polyline": "BG-ynmkDm59wZ2DuN8BoGsEoQwCsJsEkSoBoG8BsJsE0U8BgK8BoLoB4IoB0KoBoLoBkNwC8a8B0UoB0UoBkN8BwW8BwWwC0UoB0KwC4SkDof4DwlBwCkXoBwMwCsYwCkXoB0KgFkwB8B8Q8B8V8BkNwCwWwC0U8B0P8BwR4D8fUwMoBwgBoBoaoBoVoBgUUkSU8LU8LoB8LkDwR7GkD3I0F3DwCnQwMzPkNvHoG_doa_dgZjX4SjS0P3SwRrJsJkDwqBUwMkDw0BUgPTgP7B8QnG8kBzKs7B7BsO3I84BnQo7CjIkrBjI4rBzF4c7BsJ7B0K_Jo4B7LouBzFkSjSoiC_J8fzK8fvHwRvCsE_JwR7G8LvM8V_OzPnG7GvWrY3NnQzKvM7Q7VjNzPjIzK3cnkBnLrO3InL7QzU7GjIjI_JA0KToLT0FTsE7BoG7BgFzFkNnLoanLkXnGkN3I4SrOofnGwMrJ4SrE4IjD0F",
+                    "language": "en-us",
+                    "transport": {
+                        "mode": "car"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "e6e52bb0-7f43-45f3-b1c8-f6d121e81ed6",
+            "sections": [
+                {
+                    "id": "f51c4609-89c1-49cb-a2bf-19c5a29374c3",
+                    "type": "vehicle",
+                    "actions": [
+                        {
+                            "action": "depart",
+                            "duration": 173,
+                            "length": 1002,
+                            "instruction": "Head toward Am Nordbahnhof on Invalidenstraße. Go for 1.0 km.",
+                            "offset": 0
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 56,
+                            "length": 356,
+                            "instruction": "Turn right onto Brunnenstraße. Go for 356 m.",
+                            "offset": 49,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "continue",
+                            "duration": 106,
+                            "length": 599,
+                            "instruction": "Continue on Rosenthaler Straße. Go for 599 m.",
+                            "offset": 60
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 41,
+                            "length": 228,
+                            "instruction": "Turn left onto Neue Schönhauser Straße. Go for 228 m.",
+                            "offset": 86,
+                            "direction": "left",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 50,
+                            "length": 247,
+                            "instruction": "Turn right onto Münzstraße. Go for 247 m.",
+                            "offset": 94,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "continue",
+                            "duration": 34,
+                            "length": 146,
+                            "instruction": "Continue on Memhardstraße. Go for 146 m.",
+                            "offset": 109
+                        },
+                        {
+                            "action": "continue",
+                            "duration": 45,
+                            "length": 284,
+                            "instruction": "Continue on Alexanderplatz (B2/B5). Go for 284 m.",
+                            "offset": 115
+                        },
+                        {
+                            "action": "arrive",
+                            "duration": 0,
+                            "length": 0,
+                            "instruction": "Arrive at Alexanderplatz (B2/B5).",
+                            "offset": 131
+                        }
+                    ],
+                    "departure": {
+                        "time": "2024-11-09T11:00:00+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.5309912,
+                                "lng": 13.384595
+                            },
+                            "originalLocation": {
+                                "lat": 52.53086,
+                                "lng": 13.3846899
+                            }
+                        }
+                    },
+                    "arrival": {
+                        "time": "2024-11-09T11:08:25+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.52252,
+                                "lng": 13.41521
+                            },
+                            "originalLocation": {
+                                "lat": 52.5222399,
+                                "lng": 13.41274
+                            }
+                        }
+                    },
+                    "summary": {
+                        "duration": 505,
+                        "length": 2862,
+                        "baseDuration": 412
+                    },
+                    "polyline": "BG-ynmkDm59wZ2DuN8BoGsEoQwCsJsEkSoBoG8BsJsE0U8BgK8BoLoB4IoB0KoBoLoBkNwC8a8B0UoB0UoBkN8BwW8BwWwC0UoB0KwC4SkDof4DwlBwCkXoBwMwCsYwCkXoB0KgFkwB8B8Q8B8V8BkNwCwWwC0U8B0P8BwR4D8fUwMoBwgBoBoaoBoVoBgUUkSU8LU8LoB8LkDwR7GkD3I0F3DwCnQwMzPkNvHoG_doa_dgZjX4SjS0P3SwRrJsJrnBgen4B8uBrY0U_OgKzFsEzF4D_EkDnBU7BoB3I4DzKkD_TgFvH8BvHwC7G8BzF8B3DUrEU_EA_ET_EnBzF7BzFvCvgBzPnQ3IjIg8B7BgeUsJoBwMgF0ZwMg3B8B0FoBwCToLT0FnB8GvCoLjDgK_EgP_J4c7BgF_J4c7LgjB3DwMvC8LvCsJnB0FnB8GnBsJnBwMT4InBgZnB0enBouBA0KToLT0FTsE7BoG7BgFzFkNnLoanLkXnGkN3I4SrOofnGwMrJ4SrE4IjD0F",
+                    "language": "en-us",
+                    "transport": {
+                        "mode": "car"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "783ae45e-2dfa-4934-94ca-b418a1543892",
+            "sections": [
+                {
+                    "id": "39ecceb1-71cd-462d-aacb-f21a3dfa10c8",
+                    "type": "vehicle",
+                    "actions": [
+                        {
+                            "action": "depart",
+                            "duration": 173,
+                            "length": 1002,
+                            "instruction": "Head toward Am Nordbahnhof on Invalidenstraße. Go for 1.0 km.",
+                            "offset": 0
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 56,
+                            "length": 356,
+                            "instruction": "Turn right onto Brunnenstraße. Go for 356 m.",
+                            "offset": 49,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 91,
+                            "length": 626,
+                            "instruction": "Turn left onto Torstraße. Go for 626 m.",
+                            "offset": 60,
+                            "direction": "left",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 90,
+                            "length": 539,
+                            "instruction": "Turn right onto Rosa-Luxemburg-Straße. Go for 539 m.",
+                            "offset": 76,
+                            "direction": "right",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "turn",
+                            "duration": 48,
+                            "length": 153,
+                            "instruction": "Turn left onto Memhardstraße. Go for 153 m.",
+                            "offset": 94,
+                            "direction": "left",
+                            "severity": "quite"
+                        },
+                        {
+                            "action": "continue",
+                            "duration": 45,
+                            "length": 284,
+                            "instruction": "Continue on Alexanderplatz (B2/B5). Go for 284 m.",
+                            "offset": 101
+                        },
+                        {
+                            "action": "arrive",
+                            "duration": 0,
+                            "length": 0,
+                            "instruction": "Arrive at Alexanderplatz (B2/B5).",
+                            "offset": 117
+                        }
+                    ],
+                    "departure": {
+                        "time": "2024-11-09T11:00:00+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.5309912,
+                                "lng": 13.384595
+                            },
+                            "originalLocation": {
+                                "lat": 52.53086,
+                                "lng": 13.3846899
+                            }
+                        }
+                    },
+                    "arrival": {
+                        "time": "2024-11-09T11:08:23+01:00",
+                        "place": {
+                            "type": "place",
+                            "location": {
+                                "lat": 52.52252,
+                                "lng": 13.41521
+                            },
+                            "originalLocation": {
+                                "lat": 52.5222399,
+                                "lng": 13.41274
+                            }
+                        }
+                    },
+                    "summary": {
+                        "duration": 503,
+                        "length": 2960,
+                        "baseDuration": 401
+                    },
+                    "polyline": "BG-ynmkDm59wZ2DuN8BoGsEoQwCsJsEkSoBoG8BsJsE0U8BgK8BoLoB4IoB0KoBoLoBkNwC8a8B0UoB0UoBkN8BwW8BwWwC0UoB0KwC4SkDof4DwlBwCkXoBwMwCsYwCkXoB0KgFkwB8B8Q8B8V8BkNwCwWwC0U8B0P8BwR4D8fUwMoBwgBoBoaoBoVoBgUUkSU8LU8LoB8LkDwR7GkD3I0F3DwCnQwMzPkNvHoG_doa_dgZjX4SjS0P3SwRrJsJkDwqBUwMkDw0BUgPTgP7B8QnG8kBzKs7B7BsO3I84BnQo7CjIkrBjI4rBzF4c7BsJjhBwRzKgF_dsOnGkD7L0FjNoG_JgFrY0KjIkDzF8B_EUzFvC7G_E7QvMzFrErdjXze3XzenV3DjDnBsJnBwMT4InBgZnB0enBouBA0KToLT0FTsE7BoG7BgFzFkNnLoanLkXnGkN3I4SrOofnGwMrJ4SrE4IjD0F",
+                    "language": "en-us",
+                    "transport": {
+                        "mode": "car"
+                    }
+                }
+            ]
+        }
+    ]
+}
